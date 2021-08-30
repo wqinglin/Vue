@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../vue.js"></script>
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+        }
+
+        .one-enter {
+            opacity: 0;
+        }
+
+        .one-enter-to {
+            opacity: 1;
+            margin-left: 500px;
+        }
+
+        .one-enter-active {
+            transition: all 2s;
+        }
+        .two-enter {
+            opacity: 0;
+        }
+
+        .two-enter-to {
+            opacity: 1;
+            margin-top: 500px;
+        }
+
+        .two-enter-active {
+            transition: all 2s;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="app">
+        <!-- 如何给多个不同的元素指定不同的动画
+        如果有多个不同的元素需要执行不同的过渡动画，那么我们可以通过给 transition指定name的方式
+        来指定”进入之前/进入之后/进入过程中，离开之前/离开之后/离开过程中”对应的类名
+        来实现不同的元素执行不同的过渡动画 -->
+        <button @click="toggle">点击</button>
+        <transition appear name="one">
+            <!-- 注：1个trnasiton标签只能放一个元素 -->
+            <div class="box" v-show="isShow"></div>
+        </transition>
+        <transition appear name="two">
+            <!-- 注：1个trnasiton标签只能放一个元素 -->
+            <div class="box" v-show="isShow"></div>
+        </transition>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                isShow: true
+            },
+            methods: {
+                toggle() {
+                    this.isShow = !this.isShow
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

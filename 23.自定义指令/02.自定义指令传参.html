@@ -1,0 +1,36 @@
+  <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../vue.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <p v-color ="'blue'">我是段落</p>
+        <p v-color ="curColor">我是段落</p>
+    </div>
+    <script>
+       
+        Vue.directive('color', {
+           bind: function (el,obj) {
+               //这里的el就是被绑定指令的那个元素 这里指p标签
+                el.style.color= obj.value
+            } 
+        })
+        
+        const vm = new Vue({
+            el: '#app',
+            data: {
+               curColor:'green'
+            },
+
+        });
+    </script>
+</body>
+
+</html>

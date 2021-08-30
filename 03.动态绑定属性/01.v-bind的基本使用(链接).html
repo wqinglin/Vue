@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../vue.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 注意：严格注意括号 -->
+    <div id="app">
+        <!-- 不可以使用mustache语法 -->
+        <!-- <img src="{{imgURL}}" alt=""> -->
+        <!-- 正确做法 -->
+        <img v-bind:src="imgURL" alt="">
+        <a v-bind:href="aHref">百度一下</a>
+        <!-- 语法糖写法 -->
+        <img :src="imgURL" alt="">
+        <a :href="aHref">百度一下</a>
+    </div>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                message: '你好啊',
+                imgURL: 'https://img.alicdn.com/imgextra/i2/120852208/O1CN01cadxpb1SBJBkNXmIW_!!0-saturn_solar.jpg_468x468q75.jpg_.webp',
+                aHref: 'http://www.baidu.com'
+            },
+            methods: {}
+        });
+    </script>
+</body>
+
+</html>

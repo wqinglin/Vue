@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../vue.js"></script>
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+        }
+
+        .a {
+            opacity: 0;
+        }
+
+        .b {
+            opacity: 1;
+            margin-left: 500px;
+        }
+
+        .c {
+            transition: all 3s;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 
+        1.自定义类名动画
+        在Vue中除了可以使用默认类名（y-xxx）来指定过渡动画
+        除了可以使用自定义类名前缀（yyy-xx）来指定过渡动画( transition name='yyy' )
+        除了可以使用JS钩子函数来指定过渡动画以外
+        还可以使用自定义类名的方式来指定过渡动画 -->
+        <button @click="toggle">点击</button>
+        <transition appear  enter-class="a" enter-active-class="c" enter-to-class="b">
+            <div class="box" v-show="isShow"></div>
+        </transition>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                isShow: true
+            },
+            methods: {
+                toggle() {
+                    this.isShow = !this.isShow
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

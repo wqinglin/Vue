@@ -1,0 +1,30 @@
+{
+  "id": "2566376",
+  "name": "7",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "5184984",
+      "name": "粽子",
+      "font_class": "zongzi",
+      "unicode": "e615",
+      "unicode_decimal": 58901
+    },
+    {
+      "icon_id": "9255932",
+      "name": "肉粽子",
+      "font_class": "rouzongzi",
+      "unicode": "e6a6",
+      "unicode_decimal": 59046
+    },
+    {
+      "icon_id": "9255934",
+      "name": "肉粽子宝宝",
+      "font_class": "rouzongzibaobao",
+      "unicode": "e6a7",
+      "unicode_decimal": 59047
+    }
+  ]
+}

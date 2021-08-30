@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../vue.js"></script>
+    <title>Document</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 通常情况下不使用，防止页面在加载是卡顿，而显示{{message}} -->
+    <!-- cloak 斗篷 -->
+    <div id="app" v-cloak>
+        {{message}}
+    </div>
+    <script>
+        setTimeout(function () {
+            const vm = new Vue({
+                el: '#app',
+                data: {
+                    message: "你好啊"
+                }
+            })
+        }, 1000)
+    </script>
+</body>
+
+</html>

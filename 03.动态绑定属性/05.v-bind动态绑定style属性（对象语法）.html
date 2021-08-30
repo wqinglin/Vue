@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../vue.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <h2 v-bind:class="{属性名:属性值,属性名:属性值}">{{message}}</h2> -->
+        <!-- fontSize = font -size -->
+        <h2 :style = "{fontSize: '40px'}">{{message}}</h2>
+        <h2 :style = "{fontSize: fontStyle,backgroundColor:fontColor}">{{message}}</h2>
+        <h2 :style = "{fontSize: fontStyle1+'px',backgroundColor:fontColor}">{{message}}</h2>
+        <h2 :style = "fontStyle3()">{{message}}</h2>
+    </div>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                message: "你好啊",
+                // 必须加'',否则将被作为变量去解析
+                fontStyle:'50px',
+                fontStyle1:60,
+                fontColor:'green'
+            },
+            methods: {
+                fontStyle3(){
+                   return {fontSize: this.fontStyle1+'px',backgroundColor:this.fontColor}
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

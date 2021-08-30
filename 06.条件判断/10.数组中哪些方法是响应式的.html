@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../vue.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="item in letters">{{item}}</li>
+        </ul>
+        <button @click="btnClick">按钮</button>
+
+    </div>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                letters: ['a', 'b', 'c', 'd']
+            },
+            methods: {
+                btnClick() {
+                    // this.letters.push("aaa")
+                    //以下均可以响应式页面
+                    // push(),pop(),shift(),unshift(),sort(),reverse(),splice()
+
+                    //    例外
+                    this.letters[0] = "bbb"
+                    // 解决非响应式方法一（推荐）
+                    this.letters.splice(0,1,"bbb")
+                    // 解决非响应式方法二
+                    // set(要修改的对象，索引值，修改后的值)
+                    //   Vue.set(this.letters,0,"bbb")
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <script src="../vue.js"></script>
+</head>
+<body>
+<div id="app">
+  <form>
+    <input type="text" v-model="name">
+    <input type="submit" @click.prevent="add" value="添加">
+  </form>
+  <ul>
+    <li v-for="(person, index) in persons" :key="person.id">
+      <input type="checkbox">
+      <span>{{index}} - {{person.name}}</span>
+    </li>
+  </ul>
+</div>
+</body>
+<script>
+  /* 1. 创建 vue 实例对象 */
+  let vm = new Vue({
+    // 2. 声明vue的实例对象控制页面的哪个区域
+    el: '#app',
+    // 3. 声明vue控制区域可以使用的数据
+    data: {
+      persons: [
+        {name: "zs", id: 1},
+        {name: "ls", id: 2},
+        {name: "ww", id: 3}
+      ],
+      name: ""
+    },
+    methods: {
+      add() {
+        let lastPerson = this.persons[this.persons.length - 1]
+        let newPerson = {name: this.name, id: lastPerson.id + 1}
+        // this.persons.push(newPerson)
+        this.persons.unshift(newPerson)
+        this.name = ""
+      }
+    }
+  })
+</script>
+</html>
+

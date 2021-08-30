@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../vue.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app1">
+        <!-- <p>{{name | formatStr}}</p> -->
+    </div>
+    <div id="app2">
+        <p>{{name | formatStr}}</p>
+    </div>
+    <script>
+
+        //    Vue.filter('formatStr', value => {
+        //         console.log(value);
+        //         value = value.replace(/学院/g, '大学');
+        //         console.log(value);
+        //         return value
+        //     })
+
+        const vm1 = new Vue({
+            el: '#app1',
+            data: {
+                name: '知播渔学院,指趣学院,前端学院,区块链学院'
+
+            },
+        });
+        const vm2 = new Vue({
+            el: '#app2',
+            data: {
+                name: '知播渔学院,指趣学院,前端学院,区块链学院'
+            },
+            //专门用于定义局部过滤器
+            filters: {
+                'formatStr':function(value) {
+                    // console.log(value);
+                    value = value.replace(/学院/g, '大学');
+                    // console.log(value);
+                    return value
+                }
+            }
+
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../vue.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- v-once 该指令只渲染一次，不会随数据改变而改变 -->
+    <!-- 之后再修改,则含v-once的内容不修改 -->
+    <div id="app">
+            <h2>{{message}}</h2>
+            <h2 v-once>{{message}}</h2>
+    </div>
+    <script>
+        var vm = new Vue({
+           el:'#app',
+           data:{
+               message:'你好哇'
+           },
+           methods:{}
+        });
+    </script>
+</body>
+
+</html>

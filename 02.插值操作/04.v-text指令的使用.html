@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../vue.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 一般不用 -->
+    <!-- 二者功能一致，但v-text有弊端，有可能出现文本覆盖 -->
+    <div id="app">
+        <h2>{{message}},你好</h2>
+        <h2 v-text = 'message'>,你好</h2>
+    </div>
+    <script>
+        const vm = new Vue({
+           el:'#app',
+           data:{
+               message:'你好哇'
+           },
+           methods:{}
+        });
+    </script>
+</body>
+
+</html>

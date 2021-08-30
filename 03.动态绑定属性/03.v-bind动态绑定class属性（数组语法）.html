@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../vue.js"></script>
+    <title>Document</title>
+</head>
+<style>
+    .title {
+        border: olive solid 1px;
+        width: 80px;
+    }
+
+    .active {
+        color: red;
+    }
+
+    .line {
+        text-decoration: underline;
+    }
+    .aaa{
+        background-color: yellow;
+    }
+</style>
+
+<body>
+    <div id="app">
+        <!-- 少用 原因: 数组写死 -->
+        <!-- 选择器不加符号 -->
+        <!-- 变量不加双引号,字符串加双引号 -->
+        <!-- 写死不用 -->
+        <h2 class="title" :class="['active','line']">{{message}}</h2>
+        <!-- 动态添加 -->
+        <h2 class="title" :class="[active,line]">{{message}}</h2>
+        <h2 class="title" :class="getClasses()">{{message}}</h2>
+    </div>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                message: '你好啊',
+                active: 'aaa',
+                line: 'bbb'
+            },
+            methods: {
+                getClasses() {
+                    return [this.active, this.line];
+                }
+            }
+
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../vue.js"></script>
+    <title>Document</title>
+</head>
+    <style>
+        .title{
+            border:olive solid 1px;
+           width: 80px;
+        }
+        .active{
+            color: red;
+        }
+        .line{
+            text-decoration: underline;
+        }
+    </style>
+<body>
+    <div id="app">
+        <!-- <h2 v-bind:class="{key1:value,key2:value2}">{{message}}</h2> -->
+        <!-- <h2 v-bind:class="{类名1:boolean,类名2:boolean}">{{message}}</h2> -->
+        
+        <h2  class= "title" v-bind:class="{active:isActive,line:isLine}">{{message}}</h2>
+        <h2  class= "title" v-bind:class="getClasses()">{{message}}</h2>
+        <button @click = myClick>按钮</button>
+    </div>
+    <script>
+        const vm = new Vue({
+           el:'#app',
+           data:{
+               message:'你好啊',
+               isActive:true,
+               isLine:false
+           },
+           methods:{
+               myClick(){
+                   this.isActive = !this.isActive
+               },
+               getClasses(){
+                   return {active:this.isActive,line:this.isLine}
+               }
+           }
+        });
+    </script>
+</body>
+
+</html>

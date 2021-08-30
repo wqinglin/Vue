@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../vue.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <p>{{time | formatStr('yyyy-MM-dd')}}</p>
+        <p>{{time | formatStr}}</p>
+    </div>
+
+    <script>
+        // 注意点:在使用过滤器的时候，可以在过滤器名称后面加()
+        // 如果给过滤器的名称后面加上了0，那么就可以给过滤器的函数传递参数
+        Vue.filter('formatStr', (value, format) => {
+            console.log(value);
+            let date = new Date(value);
+            let year = date.getFullYear();
+            let month = date.getMonth() + 1 +'';
+            let day = date.getDate() +'';
+            let hour = date.getDate() + '';
+            let minute = date.getMinutes() + '';
+            let second = date.getSeconds() + '';
+            if(format && format === 'yyyy-MM-dd'){
+                return `${year}-${month.padStart(2,'0')}-${day.padStart(2,'0')}`;
+            }
+            return `${year}-${month.padStart(2,'0')}-${day.padStart(2,'0')}  ${hour.padStart(2,'0')}:${minute.padStart(2,'0')}:${second.padStart(2,'0')}`;          
+        })       
+
+        const vm = new Vue({
+            el: '#app',
+            data: {
+              time:Date.now()
+            },
+        });
+
+    </script>
+</body>
+
+</html>

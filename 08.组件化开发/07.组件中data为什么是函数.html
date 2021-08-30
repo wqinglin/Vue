@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../vue.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 组件实例对象   -->
+        <cpn></cpn>
+        <cpn></cpn>
+    </div>
+    <template id="cpn">
+        <div>
+            <h2>当前计数：{{counter}}</h2>
+            <button @click="increment">+</button>
+            <button @click="decrement">-</button>
+        </div>
+    </template>
+    <script>
+        Vue.component("cpn", {
+            template: '#cpn',
+            //首先和函数作用域有关，其次，调用一次函数，就运行一次函数
+            data() {
+                return {
+                    counter: 0
+                }
+            },
+            methods: {
+                increment() {
+                    this.counter++
+                },
+                decrement() {
+                    this.counter--
+                }
+            }
+        })
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                message: "你好啊"
+            },
+            methods: {}
+        });
+    </script>
+
+
+    <script>
+        // 写法一
+        function abc() {
+            return {
+                name: 'wql',
+                age: 18
+            }
+        }
+        //指向的不是同一个对象
+        let obj1 = abc();
+        let obj2 = abc();
+        let obj3 = abc();
+        obj1.name = "kobe"
+        console.log(obj2);
+        console.log(obj3);
+
+
+        //写法二
+        const obj = {
+            name : "wql",
+            age :18
+        }
+        //指向的是同一个对象
+        function ab(){
+            return obj;
+        }
+        let obj4 = ab();
+        let obj5 = ab();
+        let obj6 = ab();
+        obj4.name = "kobe"
+        console.log(obj5);
+        console.log(obj6);
+    </script>
+</body>
+
+</html>

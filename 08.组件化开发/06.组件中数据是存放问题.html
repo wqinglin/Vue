@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../vue.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 组件内部不可以直接访问Vue实例里面的对象 -->
+    <div id="app">
+        <cpn></cpn>
+        <cpn></cpn>
+    </div>
+    <template id="cpn">
+        <div>
+            <h2>{{title}}</h2>
+            <p>我是内容</p>
+        </div>
+
+    </template>
+    <script>
+        Vue.component("cpn", {
+            template: "#cpn",
+            data(){
+                return {
+                    title:"abc"
+                }
+            }
+        })
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                title: "我是标题"
+            },
+            methods: {}
+        });
+    </script>
+</body>
+
+</html>

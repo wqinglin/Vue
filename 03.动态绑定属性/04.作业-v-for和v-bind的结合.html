@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../vue.js"></script>
+    <title>Document</title>
+    <style>
+        li{
+            cursor: pointer;
+        }
+       .active{
+           color: red;
+       }
+    </style>
+</head>
+    
+<body>
+    <!-- 点击哪一项，哪一项变为红色 -->
+    <div id="app">
+        <ul>
+            <!-- <li v-for="item in movies">{{item}}</li> -->
+            <li v-for='(value,index) in movies' :class='{active:currentIndex == index}' @click='liClick(index)'>{{index}}--{{value}}</li>
+        </ul>
+    </div>
+    <script>
+        const vm = new Vue({
+           el:'#app',
+           data:{
+               movies:['海王','海尔兄弟','凹凸曼','西游记'],
+               currentIndex:0
+           },
+           methods:{
+            liClick(index){
+                this.currentIndex = index;
+            }
+           }
+        });
+    </script>
+</body>
+
+</html>

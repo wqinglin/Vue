@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../vue.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 省略小括号须同时满足2个条件：1.事件监听，2.不传参数 -->
+    <div id="app">
+        <!-- 1.事件调用的方法没有参数  -->
+        <!-- 输出一致 -->
+        <button @click="btn1Click()">按钮1</button>
+        <button @click="btn1Click">按钮1</button>
+
+        <!-- 2.在事件定义时，写方法时省略了小括号，但是方法本身需要一个参数的，这个时候
+       Vue会将浏览器生产的event事件对象传入到方法中 -->
+        <button @click="btn2Click(123)">按钮2</button>
+        <!--       '-----',123          -->
+
+        <button @click="btn2Click()">按钮2</button>
+        <!--     ----- undefined      -->
+
+        <button @click="btn2Click">按钮2</button>
+        <!-- -----   MouseEvent {isTrusted: true, screenX: 255, screenY: 128, clientX: 255, clientY: 25, …}    -->
+
+        <!-- 3.在方法定义时,我们需要event对象,同时也需要其他参数 -->
+        <button @click="btn3Click">按钮3</button>
+        <!-- ++++++ MouseEvent {...} undefined -->
+
+        <button @click="btn3Click(123,abc)">按钮3</button>
+        <!-- 123作为基本数据类型直接输出，而将abc作为变量或方法使用 -->
+        <!-- ++++++ 123 undefined   并报错   -->
+
+
+        <!-- 在调用方法时，如何手动的获取浏览器参数的event对象 ： $event -->
+        <button @click="btn3Click(123,$event)">按钮3</button>
+        <!-- ++++++ 123 MouseEvent {...} -->
+    </div>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                // abc:123
+            },
+            methods: {
+                btn1Click() {
+                    console.log("btn1Click");
+                },
+                btn2Click(event) {
+                    console.log('-----', event);
+                },
+                btn3Click(abc, event) {
+                    console.log('++++++', abc, event);
+                },
+                // abc(){
+                //     console.log(aaa)
+                // }
+            }
+        });
+    </script>
+</body>
+
+</html>

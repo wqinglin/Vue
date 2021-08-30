@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../vue.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <cpn>
+            <!-- <template v-slot:left> -->
+            <!-- 语法糖 -->
+            <template #left>
+                <span>哈哈</span>
+            </template>
+            <!-- <template v-slot:center> -->
+            <template #left>
+                <span>嘿嘿</span>
+            </template>
+            <!-- <template v-slot:right> -->
+            <template #left>
+                <span>呵呵</span>
+            </template>
+            <template v-slot>
+            </template>
+        </cpn>
+    </div>
+    <template id="cpn">
+        <div>
+            <slot name="left"><span>左边</span></slot>
+            <slot name="center"><span>中间</span></slot>
+            <slot name="right"><span>右边</span></slot>
+            <slot><span>啥也不是</span></slot>
+        </div>
+    </template>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {},
+            methods: {},
+            components: {
+                cpn: {
+                    template: '#cpn'
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

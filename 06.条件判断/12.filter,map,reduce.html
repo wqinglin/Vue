@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let arr = [10,52,150,128,82,108];
+        // let newArr  = arr.filter(function(n){
+        //     return n < 100;
+        // }).map(function(n){
+        //     return n*2;
+        // }).reduce(function(prev,cur){
+        //     return prev+cur;
+        // },0)
+        // console.log(newArr);
+
+        let newArr = arr.filter(n => n < 100).map(n => n*2).reduce((prev,cur) => prev+cur);
+        console.log(newArr);
+    </script>
+</body>
+</html>

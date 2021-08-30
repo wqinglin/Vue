@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../vue.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <p v-color>我是段落</p>
+        <input type="text" v-focus>
+    </div>
+    <script>
+        // directive方法接收两个参数
+        // 第一个参数: 指令的名称
+        // 第二个参数: 对象
+        // 注意点:在自定义指令的时候，在指定指令名称的时候，不需要写v-
+        // 注意点:指令可以在不同的生命周期阶段执行
+        // bind:指令被绑定到元素上的时候执行
+        // inserted:绑定指令的元素被添加到父元素上的时候调用
+        Vue.directive('color', {
+           bind: function (el) {
+               //这里的el就是被绑定指令的那个元素 这里指p标签
+                el.style.color="red"
+            } 
+        })
+        Vue.directive('focus', {
+           inserted: function (el) {
+               //这里的el就是被绑定指令的那个元素 这里指p标签
+                el.focus();
+            } 
+        })
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                message: "你好啊"
+            },
+
+        });
+    </script>
+</body>
+
+</html>

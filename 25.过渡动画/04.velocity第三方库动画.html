@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../vue.js"></script>
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="toggle">点击</button>
+        <transition appear v-bind:css="false" v-on:before-enter="beforeEnter" v-on:enter="enter"
+            v-on:after-enter="afterEnter">
+            <div class="box" v-show="isShow"></div>
+        </transition>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                isShow: true
+            },
+            methods:{
+                toggle() {
+                    this.isShow = !this.isShow
+                },
+                beforeEnter(el) {
+                },
+                enter(el, done) {
+                    Velocity(el,{opacity:1,marginLeft:"500px"},3000)
+                    done();
+                },
+                afterEnter(el) {
+               
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

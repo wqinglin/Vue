@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../vue.js"></script>
+    <title>Document</title>
+</head>
+    <!-- 当相同数据被重复调用时，methods方法被触发多次，内部无缓存
+    而computed方法只执行一次，内部有缓存机制 -->
+<body>
+    <div id="app">
+        <!-- 直接拼接 -->
+        <h2>{{firstName}} {{lastName}}</h2>
+        <!-- 定义methods -->
+        <h2>{{getFullName()}}</h2>
+        <!-- <h2>{{getFullName()}}</h2>
+        <h2>{{getFullName()}}</h2> -->
+        <!-- 通过computed -->
+        <h2>{{fullName}}</h2>
+        <!-- <h2>{{fullName}}</h2>
+        <h2>{{fullName}}</h2> -->
+
+    </div>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                firstName: 'wu',
+                lastName: 'qinglin'
+            },
+            computed: {
+                fullName() {
+                    console.log('fullName');
+                    return this.firstName + ' ' + this.lastName
+                }
+            },
+            methods: {
+                getFullName() {
+                    console.log('getFullName');
+                    return this.firstName + ' ' + this.lastName
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

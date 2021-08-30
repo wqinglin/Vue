@@ -1,0 +1,16 @@
+.box{
+    color: blueviolet;
+}
+body{
+    background-image: url('../imgs/3.jpg');
+    background-repeat: no-repeat;
+    background-size: 500px 400px; 
+}
+img{
+    width: 150px;
+    height: 150px;
+}
+.box2{
+    width: 200px;
+    height: 150px;
+}

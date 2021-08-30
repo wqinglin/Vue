@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../vue.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 可被用于一些常见的文本格式化 -->
+    <!-- 
+    4.过滤器注意点
+    4.1只能在插值语法和v-bind中使用
+    4.2过滤器可以连续使用
+  -->
+    <div id="app">
+        <p>{{name | formatStr | formatStr2}}</p>
+    </div>
+    <script>
+        // 如何自定义全局过滤器
+        // 通过Vue.filter
+        // filter方法接收两个参数
+        // 第一个参数:过滤器名称
+        // 第二个参数:处理数据的函数
+        // 注意点:默认情况下处理数据的函数接收一个参数，就是当前要被处理的数据
+        Vue.filter('formatStr', value => {
+            console.log(value);
+            value = value.replace(/学院/g, '大学');
+            console.log(value);
+            return value
+
+        })
+
+        Vue.filter('formatStr2', value => {
+            // console.log(value);
+            value = value.replace(/大学/g, '幼儿园');
+            console.log(value);
+            return value
+
+        })
+
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                name: '知播渔学院,指趣学院,前端学院,区块链学院'
+            },
+
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../vue.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 父组件替换插槽的标签，但是内容由子组件来提供 -->
+    <div id="app">
+        <cpn></cpn>
+        <cpn>
+            <!-- vue2.5.x一下必须使用<template></template> -->
+           <!-- 固定写法 -->
+            <template slot-scope = "slot">
+                <!-- <span v-for = "item in slot.data"></span> -->
+                <span>{{slot.data.join("-")}}</span>
+            </template>
+        </cpn>
+    </div>
+    <template id="cpn">
+        <div>
+            <slot :data = "language">
+                <ul>
+                    <li v-for="item in language">{{item}}</li>
+                </ul>
+            </slot>
+        </div>
+    </template>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {},
+            methods: {},
+            components: {
+                cpn: {
+                    template: '#cpn',
+                    data() {
+                        return {
+                            language: ["javascript", "java", "html", "css", "go", "ajax"]
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
